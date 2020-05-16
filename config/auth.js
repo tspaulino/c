@@ -1,4 +1,6 @@
+const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;
+
 module.exports = {
-  CLIENT_ID: '<your_client_id>',
-  CLIENT_SECRET: '<your_client_secret>'
+  CLIENT_ID: SPOTIFY_CLIENT_ID,
+  CLIENT_SECRET: SPOTIFY_CLIENT_SECRET
 };
