@@ -1,3 +1,4 @@
+const { HOST_NAME } = process.env;
 module.exports = {
-  HOST: 'http://localhost:3000'
+  HOST: HOST_NAME
 };
