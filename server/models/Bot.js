@@ -30,6 +30,7 @@ class Bot {
       id: this.id,
       images: [{ url: this.image }],
       type: 'robot',
+      display_name: 'Robot',
       socketIdArray: [] // todo: always empty, add this attribute in order to be compatible with other true users
     };
   }

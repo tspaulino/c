@@ -5,6 +5,15 @@ export const voteUp = id => ({
   id
 });
 
+export const voteDown = id => ({
+  type: types.VOTE_DOWN,
+  id
+});
+
 export const voteUpSuccess = () => ({
   type: types.VOTE_UP_SUCCESS
+});
+
+export const voteDownSuccess = () => ({
+  type: types.VOTE_DOWN_SUCCESS
 });

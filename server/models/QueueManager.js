@@ -32,7 +32,8 @@ class QueueManager {
 
   sort() {
     this.queue.sort((a, b) => {
-      const diffVoters = b.voters.length - a.voters.length;
+      let diffVoters = 0;
+      if (b.voters.length > 0) diffVoters = b.voters.reduce((total, votes) => total + votes.value);
       if (diffVoters !== 0) {
         return diffVoters;
       } else {
@@ -101,7 +102,21 @@ class QueueManager {
     if (voters) {
       const userVotes = voters.filter(v => v.id === user.id);
       if (userVotes.length === 0) {
-        this.queue[index].voters.push(user);
+        this.queue[index].voters.push({ user: user, value: 1 });
+        this.handleQueueChanged();
+        return true;
+      }
+    }
+  }
+
+  voteDownId(user, id) {
+    const index = this.queue.findIndex(item => item.id === id);
+    if (index === -1) return false;
+    const voters = this.queue[index].voters;
+    if (voters) {
+      const userVotes = voters.filter(v => v.id === user.id);
+      if (userVotes.length === 0) {
+        this.queue[index].voters.push({ user: user, value: -1 });
         this.handleQueueChanged();
         return true;
       }
